@@ -12,7 +12,7 @@
 	<Town />
 	<Dream ref="dream" />
 </div>
-<transition name="app" v-else>
+<transition name="welcome" v-else>
 	<div  class="welcome" v-on:click="start">
 		<img src="assets/logo.png" alt="Dream Hero" />
 	</div>
@@ -61,6 +61,7 @@ export default {
 }
 
 html {
+	min-width: 640px;
 	width: 100%;
 	height: 100%;
 }
