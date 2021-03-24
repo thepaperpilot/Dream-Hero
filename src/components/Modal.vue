@@ -1,7 +1,7 @@
 <template>
 	<transition name="modal">
 		<div class="modal-mask" v-if="show">
-			<div class="modal-wrapper" v-on:click.self="$emit('close')">
+			<div class="modal-wrapper" v-on:pointerdown.self="$emit('close')">
 				<div class="modal-container">
 
 					<div class="modal-header">
@@ -45,7 +45,8 @@ export default {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	min-width: 640px;
+	height: var(--height);
 	background-color: rgba(0, 0, 0, 0.5);
 	display: table;
 	transition: opacity 0.3s ease;

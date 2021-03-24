@@ -13,7 +13,7 @@
             :key="index" :action="action" :index="index" />
     </span>
     <span v-bind:style="{ width: $store.upgrades.Cot >= 2 && $store.position === index ? '15%' : '0%' }"
-        class="endAtFloor" v-on:click="toggleEndAtFloor">
+        class="endAtFloor" v-on:pointerdown="toggleEndAtFloor">
         Wake up early:<br/><b>{{ $store.endAtFloor ? "On" : "Off" }}</b>
     </span>
     <Action :tile="$store.path[index]" />
@@ -48,7 +48,6 @@ export default {
 <style scoped>
 .tile {
     width: 600px;
-    max-width: 90vw;
     margin: 10px auto;
     background: var(--raised-color);
 }

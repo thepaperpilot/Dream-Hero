@@ -5,19 +5,19 @@
             <div class="town">
                 <h1 class="background">World Map</h1>
                 <div v-bind:class="{ building: true, highlight: $store.tutorialOne }" style="top: 500px; left: 700px;"
-                    v-on:click="$actions.openBuilding('Cot')">
+                    v-on:pointerdown="$actions.openBuilding('Cot')">
                     Cot
                 </div>
                 <div class="building" v-if="!$store.tutorialOne" style="top: 200px; left: 600px;"
-                    v-on:click="$actions.openBuilding('Bank')">
+                    v-on:pointerdown="$actions.openBuilding('Bank')">
                     Bank
                 </div>
                 <div class="building" v-if="!$store.tutorialOne" style="top: 800px; left: 200px;"
-                    v-on:click="$actions.openBuilding('Apothecary')">
+                    v-on:pointerdown="$actions.openBuilding('Apothecary')">
                     Apothecary
                 </div>
                 <div class="building" v-if="!$store.tutorialOne" style="top: 750px; left: 800px;"
-                    v-on:click="$actions.openBuilding('Armory')">
+                    v-on:pointerdown="$actions.openBuilding('Armory')">
                     Armory
                 </div>
             </div>
@@ -113,6 +113,8 @@ export default {
     right: 0;
     background: var(--bg-color);
     z-index: 1;
+    min-width: 640px;
+    height: calc(var(--height) - 50px);
 }
 
 .town-enter {

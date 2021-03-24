@@ -11,6 +11,7 @@ const storageKey = "thepaperpilot-dream";
 
 // Load data from localStorage
 const startData = {
+	windowHeight: window.innerHeight,
 	timePlayed: 0,
 	keepPlaying: false,
 	points: new Decimal(0),
@@ -296,6 +297,7 @@ const actions = window.actions = {
 	}
 };
 Vue.prototype.$actions = actions;
+Vue.prototype.window = window;
 
 // Add utility functions to Vue
 Vue.prototype.format = format;
@@ -306,6 +308,10 @@ Vue.prototype.formatTime = formatTime;
 Vue.config.productionTip = false;
 Vue.use(panZoom);
 Vue.use(PerfectScrollbar, { name: 'scroll' });
+
+window.addEventListener('resize', () => {
+	store.windowHeight = window.innerHeight;
+});
 
 // Start Vue
 window.vue = new Vue({

@@ -1,22 +1,24 @@
 <template>
-<transition name="victory" v-if="$store.cycle >= 5 && !$store.keepPlaying">
-	<div  class="victory">
-		<h1>You Win!</h1>
-		<h2>Congratulations, you beat the game in:<br/>{{ formatTime($store.timePlayed) }}</h2>
-		<h3>You can keep going if you'd like, but things might get weird</h3>
-		<button v-on:click="keepGoing">Keep Going</button>
+<div v-bind:style="{ '--height': $store.windowHeight + 'px' }">
+	<transition name="victory" v-if="$store.cycle >= 5 && !$store.keepPlaying">
+		<div  class="victory">
+			<h1>You Win!</h1>
+			<h2>Congratulations, you beat the game in:<br/>{{ formatTime($store.timePlayed) }}</h2>
+			<h3>You can keep going if you'd like, but things might get weird</h3>
+			<button v-on:click="keepGoing">Keep Going</button>
+		</div>
+	</transition>
+	<div id="app" v-else-if="$store.started">
+		<Header />
+		<Town />
+		<Dream ref="dream" />
 	</div>
-</transition>
-<div id="app" v-else-if="$store.started">
-	<Header />
-	<Town />
-	<Dream ref="dream" />
+	<transition name="welcome" v-else>
+		<div  class="welcome" v-on:click="start">
+			<img src="assets/logo.png" alt="Dream Hero" />
+		</div>
+	</transition>
 </div>
-<transition name="welcome" v-else>
-	<div  class="welcome" v-on:click="start">
-		<img src="assets/logo.png" alt="Dream Hero" />
-	</div>
-</transition>
 </template>
 
 <script>

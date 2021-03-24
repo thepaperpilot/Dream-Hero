@@ -1,7 +1,7 @@
 <template>
 <scroll class="dream" ref="scroll">
     <Floor v-for="(tile, index) in $store.path" :key="index" :index="index" />
-    <div v-if="$store.upgrades.Cot >= 1" class="endAtLoop" v-on:click="toggleEndAtLoop">
+    <div v-if="$store.upgrades.Cot >= 1" class="endAtLoop" v-on:pointerdown="toggleEndAtLoop">
         <h2 v-if="$store.endAtLoop">Waking up at end of this sleep cycle</h2>
         <h2 v-else>Entering deeper sleep at end of this sleep cycle</h2>
         <span>Click to toggle</span>
@@ -20,7 +20,7 @@
             </span>
         </div>
         <div slot="footer">
-            <button v-on:click="$actions.endDream">Wake Up</button>
+            <button v-on:pointerdown="$actions.endDream">Wake Up</button>
         </div>
     </Modal>
 </scroll>
@@ -53,11 +53,13 @@ export default {
     right: 0;
     background: var(--bg-color);
     padding: 20px;
+    min-width: 640px;
+    height: calc(var(--height) - 50px);
+    box-sizing: border-box;
 }
 
 .endAtLoop {
     width: 600px;
-    max-width: 90vw;
     margin: 10px auto;
     background: var(--raised-color);
     height: 100px;
